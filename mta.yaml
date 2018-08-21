@@ -2,3 +2,36 @@ ID: XSAWorkshopN
 _schema-version: '2.0'
 description: XSA Workshop
 version: 0.0.1
+modules:
+  - name: apps
+    type: nodejs
+    path: apps
+    provides:
+      - name: apps_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db_2
+      - name: db
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db_2
+  - name: ui
+    type: html5
+    path: ui
+    requires:
+      - name: apps_api
+        group: destinations
+        properties:
+          name: apps_be
+          url: '~{url}'
+resources:
+  - name: hdi_db_2
+    parameters:
+      config:
+        schema: XSAWorkshopN
+    properties:
+      hdi-container-name_2: '${service-name}'
+    type: com.sap.xs.hdi-container

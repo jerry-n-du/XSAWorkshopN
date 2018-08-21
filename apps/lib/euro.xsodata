@@ -1,0 +1,3 @@
+service { 
+  "XSAWorkshopN.db::EuroCountries" as "euro" keys generate local "ID"; 
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="XSAWorkshopN.db::EuroCountries" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="EuroCountries"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="XSAWorkshopN.db::tables.country">
+    <resourceUri>XSAWorkshopN.db::tables.country</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="XSAWorkshopN.db::tables.country" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="name"/>
+      <keyMapping columnObjectName="tables.country" columnName="name"/>
+    </attribute>
+    <attribute id="partof" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="partof"/>
+      <keyMapping columnObjectName="tables.country" columnName="partof.continent"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+
+  <filter>&quot;partof&quot; = 'Europe'</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
