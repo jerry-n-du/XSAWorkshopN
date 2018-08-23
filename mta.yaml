@@ -19,6 +19,9 @@ modules:
     path: db
     requires:
       - name: hdi_db_2
+        properties:
+          TARGET_CONTAINER: ~{hdi-container-name_2} # defined at (d1)
+      - name: EPM_XXX-table-grantor                  #...for executing grant statement
   - name: ui
     type: html5
     path: ui
@@ -42,3 +45,5 @@ resources:
     type: com.sap.xs.uaa
     parameters:
       path: ./xs-security.json
+  - name: EPM_XXX-table-grantor
+    type: org.cloudfoundry.existing-service
