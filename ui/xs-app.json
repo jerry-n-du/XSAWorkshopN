@@ -1,11 +1,18 @@
 {
 	"welcomeFile": "index.html",
-	"authenticationMethod": "none",
+	"authenticationMethod": "route",
 	"routes": [{
 		"source": "^/euro.xsodata/.*$", 
-		"destination": "apps_be"
+		"destination": "apps_be",
+		"authenticationType": "xsuaa",
+	    "scope": "$XSAPPNAME.view"
 	}, {
-         "source": ".*\\.xsjs",
-         "destination": "apps_be"
-    }]
+        "source": ".*\\.xsjs",
+        "destination": "apps_be",
+        "scope": "$XSAPPNAME.create" 
+    }, {
+		"source": "^/(.*)$",
+		"localDir" : "resources",
+		"scope" : "$XSAPPNAME.view"
+   }]
 }

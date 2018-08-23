@@ -13,6 +13,7 @@ modules:
     requires:
       - name: hdi_db_2
       - name: db
+      - name: XSAWorkshopN_uaa
   - name: db
     type: hdb
     path: db
@@ -22,11 +23,13 @@ modules:
     type: html5
     path: ui
     requires:
+      - name: XSAWorkshopN_uaa
       - name: apps_api
         group: destinations
         properties:
           name: apps_be
           url: '~{url}'
+          forwardAuthToken: true
 resources:
   - name: hdi_db_2
     parameters:
@@ -35,3 +38,7 @@ resources:
     properties:
       hdi-container-name_2: '${service-name}'
     type: com.sap.xs.hdi-container
+  - name: XSAWorkshopN_uaa
+    type: com.sap.xs.uaa
+    parameters:
+      path: ./xs-security.json
