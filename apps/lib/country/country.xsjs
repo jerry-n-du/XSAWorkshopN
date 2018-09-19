@@ -12,7 +12,6 @@ function saveCountry(country) {
    } else {
       return {body : output,
       status: $.net.http.CREATED};
-
    }
 }
 
